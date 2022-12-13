@@ -1,5 +1,4 @@
 "use strict";
-//const { last } = require("cheerio/lib/api/traversing");
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
@@ -9,20 +8,10 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
       User.hasMany(models.Todo, {
         foreignKey: "userId",
       });
-    }
-
-    static createUser({ firstName, lastName, email, password }) {
-      console.log(firstName, lastName, email, password);
-      return this.create({
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-      });
+      // define association here
     }
   }
   User.init(
